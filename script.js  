@@ -32,3 +32,29 @@ function renderTodos() {
     todoList.appendChild(li);
   });
 }
+
+// Function to add a todo
+function addTodo() {
+  const newTodo = todoInput.value.trim();
+  if (newTodo !== "") {
+    todos.push(newTodo);
+    todoInput.value = "";
+    renderTodos();
+  }
+}
+
+// Function to delete a todo
+function deleteTodo(index) {
+  todos.splice(index, 1);
+  renderTodos();
+}
+
+// Event listener for add button
+addBtn.addEventListener("click", addTodo);
+
+// Optional: Pressing Enter key also adds todo
+todoInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    addTodo();
+  }
+});
